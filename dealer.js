@@ -8,8 +8,8 @@ const eventBus = require('ocore/event_bus.js');
 checkConfig();
 
 eventBus.on('headless_wallet_ready', function() {
-getLastPricesAndUpdate();
-setInterval(getLastPricesAndUpdate, tradingConf.refreshTimeInSec * 1000);
+	getLastPricesAndUpdate();
+	setInterval(getLastPricesAndUpdate, tradingConf.refreshTimeInSec * 1000);
 });
 
 function getLastPricesAndUpdate() {
@@ -33,8 +33,8 @@ function setBuyPrice() {
 			logger.info(myBuyingPriceInBTC +" BTC max buying price exceeded");
 			console.log("max buying price exceeded");
 		} else {
-			console.log("will place buy order at " + myBuyingPriceInBTC + " BTC for " + tradingConf.GB_to_BTC_batch_size + "GB");
-			logger.info("will place buy order at " + myBuyingPriceInBTC + " BTC for " + tradingConf.GB_to_BTC_batch_size + "GB");
+			console.log("will place buy order at " + myBuyingPriceInBTC + " BTC");
+			logger.info("will place buy order at " + myBuyingPriceInBTC + " BTC");
 			exchangeBotAPI.buyAt(myBuyingPriceInBTC, function(err) {
 				if(err)
 					console.log(err)
@@ -56,8 +56,8 @@ function setSellPrice() {
 			logger.info(mySellingPriceInBTC +" BTC under min selling price");
 			console.log("under minGBSellingPriceInBTC");
 		} else {
-			console.log("will place sell order at " + mySellingPriceInBTC + " BTC for " + tradingConf.BTC_to_GB_batch_size + "GB");
-			logger.info("will place sell order at " + mySellingPriceInBTC + " BTC for " + tradingConf.BTC_to_GB_batch_size + "GB");
+			console.log("will place sell order at " + mySellingPriceInBTC + " BTC");
+			logger.info("will place sell order at " + mySellingPriceInBTC + " BTC");
 
 			exchangeBotAPI.sellAt(mySellingPriceInBTC, function(err) {
 				if(err)
